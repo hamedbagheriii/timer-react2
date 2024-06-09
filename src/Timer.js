@@ -4,7 +4,6 @@ import './style.css'
 
 
 let interval;
-let x=10;
 
 
 class Timer extends React.Component {
@@ -12,35 +11,47 @@ class Timer extends React.Component {
     super();
 
     this.state = {
-      time : x
+      time : 10
     }
   }
 
+  // this for set state and interval =>
+  componentDidMount = ()=>{
+    clearInterval(interval);
+    interval = setInterval(() => {
+        this.setState({
+          time : --this.state.time
+        })
+    }, 1000);
+  }
+  
+  // this for remove (interval == 0) =>
+  componentDidUpdate = ()=>{
+    if(this.state.time == 0){
+      clearInterval(interval);
 
-  componentDidMount(){
-      interval = setInterval(() => {
-        //! من بعد انجام این تمرین ویدیو بعدش رو دیدم و دیدم
-        //! استفاده از خود استیت منطقی تره ولی خب موقع زدن هرچی فکر کردم نفهمیدم 
-        //! چطور بهش اشاره کنم چون معنی ست استیت رو چیزدیگه فهمیده بودم =>
-          this.setState({
-            time : --x
-          })
-      }, 1000);
+      this.setState({
+        time : 10
+      })
     }
-    
-    
-    componentDidUpdate(){
-      if(this.state.time == 0){
-          clearInterval(interval);
-      }
   }
 
+  // this for remove interval =>
+  removeInerval =()=>{
+    clearInterval(interval)
+  }  
 
 
   
   render(){
     return(
-      <h2 className='timer'>it is 00:00:{this.state.time}</h2>
+      <>
+        <h2 className='timer'>it is 00:00:{this.state.time}</h2>
+        <div className='allBtn'>
+          <button onClick={this.removeInerval} className='btn'>STOP</button>
+          <button onClick={this.componentDidMount} className='btn'>START</button>
+        </div>
+      </>
     )
   }
 }
