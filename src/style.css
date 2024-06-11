@@ -23,6 +23,7 @@ body{
     border-radius: 50%;
     background-color: rgb(0, 0, 0);
     box-shadow: 0px 0px 20px aqua;
+    cursor: pointer;
 }
 .btn{
     background-color: darkorange;
@@ -33,5 +34,19 @@ body{
     width: 80px;
     height: 30px;
     margin: 20px;
+    cursor: pointer;
+    transition: all .3s ease;
+    margin-bottom: 50px;
+}
+.btn:hover{
+    letter-spacing: 3px;
+}
+
+.main_time_list{
+    font-weight: bold;
+    font-size: 25px;
+}
+.main_time_list div{
+    margin-bottom: 8px;
     cursor: pointer;
 }
