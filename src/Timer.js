@@ -2,54 +2,69 @@ import React, { useContext, useState } from "react";
 import { DataContext } from "./testContext";
 
 let interval;
-
-const Timer = ()=>{
+const Timer = () => {
   const context = useContext(DataContext);
-  const [hour , setHour] = useState(0);
-  const [min , setMin] = useState(0);
-  const [sec , setSec] = useState(0);
-  const [active , setActive] = useState(false);
+  const [hour, setHour] = useState(0);
+  const [min, setMin] = useState(0);
+  const [sec, setSec] = useState(0);
+  const [active, setActive] = useState(false);
 
-  const handelStartTimer = ()=>{
-    if (active == false) {
+  const handleStartTimer = () => {
+    if (active === false) {
       setActive(true);
-      interval = setInterval(()=>{
-        setSec(sec++)
-        if(sec == 60){
-          setMin(min++);
-          setSec(0);
-        }
-        else if (min === 60){
-          setMin(0);
-          setHour(hour++);
-        }
-      },1000)
+      interval = setInterval(() => {
+        setSec((prevSec) => {
+          let newSec = prevSec + 1;
+          if (newSec === 60) {
+            setMin((prevMin) => {
+              let newMin = prevMin + 1;
+              if (newMin === 60) {
+                setHour((prevHour) => prevHour + 1);
+                return 0;
+              }
+              return newMin;
+            });
+            return 0;
+          }
+          return newSec;
+        });
+      }, 1000);
     }
-  }
-  
+  };
 
-
-
-  const handelStopTimer = ()=>{
+  const handleStopTimer = () => {
     clearInterval(interval);
     setActive(false);
-  }
-  
+  };
+  const handleResetTimer = () => {
+    clearInterval(interval);
+    setHour(0);
+    setMin(0);
+    setSec(0);
+    setActive(false);
+  };
 
-  
-
-  return(
-    
-    <div className="timer w-100 bg-danger px-2 py-3 d-flex align-items-center justify-content-center flex-column">
-      <div className="timer_show bg-white w-50">{`${ hour > 9 ? hour : '0'+hour}:${min > 9 ? min : '0'+min}:${
-        sec > 9 ? sec : '0'+sec}`}</div>
-      <div className="allBtn d-flex align-items-center justify-content-evenly w-75 mt-5">
-        <button className="btn fw-bold" onClick={handelStopTimer}>PUSE</button>
-        <button className="btn fw-bold" >RESET</button> 
-        <button className="btn fw-bold" onClick={handelStartTimer}>START</button>
+  return (
+    <div className="timer w-100 px-2 py-3 d-flex align-items-center justify-content-center flex-column">
+      {" "}
+      <div className="timer_show text-center fs-1 w-50">
+        {`${hour > 9 ? hour : "0" + hour}:${min > 9 ? min : "0" + min}:${
+          sec > 9 ? sec : "0" + sec
+        }`}
+      </div>
+      <div className="allBtn d-flex align-items-center justify-content-evenly w-75">
+        <button className="btn fw-bold" onClick={handleStopTimer}>
+          PAUSE
+        </button>
+        <button className="btn fw-bold" onClick={handleResetTimer}>
+          RESET
+        </button>
+        <button className="btn fw-bold" onClick={handleStartTimer}>
+          START
+        </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default Timer;

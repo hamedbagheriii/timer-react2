@@ -1,6 +1,5 @@
-.main{
-    /* background: linear-gradient(170deg,blue,red); */
-    backdrop-filter: blur(140px);
+body{
+    background: linear-gradient(-200deg,#000,#ffb301);
 }
 
 .title{
@@ -10,7 +9,25 @@
     font-weight: bold;
 }
 
+.timer{
+    margin-top: 70px;
+}
+
+.allBtn{
+    margin-top: 100px;
+}
 .btn{
     background-color: rgba(255, 179, 1, 0.823);
     box-shadow: 0 0 10px  rgba(255, 179, 1, 0.823);
 }
+.btn:hover{
+    background-color: #956902;
+}
+
+.timer_show{
+    color: rgba(255, 179, 1, 0.823);
+    text-shadow: 0 0 10px  #ffb301;
+    font-size: 45px !important;
+    letter-spacing: 5px;
+}
+

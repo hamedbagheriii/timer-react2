@@ -14,7 +14,7 @@ const App = ()=>{
     <DataContext.Provider value={{message , setMessage  , timeList ,setTimeList}}>
 
       <div className='container vh-100  d-flex align-items-center justify-content-center flex-column'>
-        <div className='main w-75 d-flex align-items-center justify-content-center flex-column'>
+        <div className='main bg-dark py-5 rounded-4  shadow-lg px-2 w-75 d-flex align-items-center justify-content-center flex-column'>
           <Hello/>
           <Timer/>
         </div>
