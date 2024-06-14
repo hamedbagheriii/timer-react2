@@ -1,21 +1,16 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import './style.css'
+import React, { useContext } from "react";
+import { DataContext } from "./testContext";
 
 
 
+const Hello = ()=>{
+  const context = useContext(DataContext);
 
-
-
-class Hello extends React.Component {
-    render(){
-      return(
-        <h1>سلام دوست من</h1>
-      )
-    }
+  return(
+    <h4 className="w-75 title text-center pt-2 pb-3 rounded-5">
+      {context.message}
+    </h4>
+  )
 }
-  
-
-
 
 export default Hello;

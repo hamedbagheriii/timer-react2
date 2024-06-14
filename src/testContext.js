@@ -1,8 +1,6 @@
-import { createContext } from "react";
+import React, { createContext } from 'react';
 
 
-
-export const TestContext = createContext({
-    timeArr : [],
-    setTimeArr : ()=>{}
-});
+export const DataContext = createContext({
+    message:'' , setMessage:()=>{} , timeList: [] ,setTimeList:()=>{}
+})
