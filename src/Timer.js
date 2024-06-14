@@ -3,7 +3,7 @@ import { DataContext } from "./testContext";
 
 let interval;
 const Timer = () => {
-  const context = useContext(DataContext);
+  const {timeList , setTimeList} = useContext(DataContext);
   const [hour, setHour] = useState(0);
   const [min, setMin] = useState(0);
   const [sec, setSec] = useState(0);
@@ -44,10 +44,20 @@ const Timer = () => {
     setActive(false);
   };
 
+
+  const handelSetTime = ()=>{
+    const newTime = `${hour > 9 ? hour : "0" + hour}:${min > 9 ? min : "0" + min}:${
+      sec > 9 ? sec : "0" + sec
+    }`;
+    setTimeList([...timeList , newTime])
+  }
+
+
+
   return (
     <div className="timer w-100 px-2 py-3 d-flex align-items-center justify-content-center flex-column">
       {" "}
-      <div className="timer_show text-center fs-1 w-50">
+      <div onClick={handelSetTime} className="timer_show text-center fs-1 w-50">
         {`${hour > 9 ? hour : "0" + hour}:${min > 9 ? min : "0" + min}:${
           sec > 9 ? sec : "0" + sec
         }`}

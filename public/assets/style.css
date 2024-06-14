@@ -2,6 +2,10 @@ body{
     background: linear-gradient(-200deg,#000,#ffb301);
 }
 
+.h-fit{
+    height: fit-content;
+}
+
 .title{
     background-color: rgba(255, 179, 1, 0.823);
     box-shadow: 0 0 10px  rgba(255, 179, 1, 0.823);
@@ -11,6 +15,7 @@ body{
 
 .timer{
     margin-top: 70px;
+    cursor: pointer;
 }
 
 .allBtn{
@@ -31,3 +36,15 @@ body{
     letter-spacing: 5px;
 }
 
+.main_list{
+    margin-top: 20px;
+}
+
+.item{   
+    color: rgba(255, 179, 1, 0.823);
+    text-shadow: 0 0 10px  #ffb301;
+    letter-spacing: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    margin-bottom: 8px;
+}
